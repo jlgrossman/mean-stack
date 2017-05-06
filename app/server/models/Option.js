@@ -1,15 +1,18 @@
-const Bookshelf = require('../utils/bookshelf');
+const Model = require('./Model');
 
-require('./Topic');
-const Option = Bookshelf.model('Option', {
+module.exports = class extends Model {
 
-  tableName: 'options',
+  static get tableName(){ return 'options'; }
 
-  topic(){ return this.belongsTo('Topic'); }
+  static relationMappings = {
+    topic: {
+      modelClass: './Topic'
+      relation: Model.BelongsToOneRelation,
+      join: {
+        from: 'options.topic_id',
+        to: 'topics.id'
+      }
+    }
+  }
 
-});
-
-module.exports = {
-  Model: Option,
-  Collection: Bookshelf.Collection.extend({model: Option})
-}
+};

@@ -25,7 +25,7 @@
     "passport-jwt": "*",
     "mysql": "*",
     "knex": "*",
-    "bookshelf": "*",
+    "objection": "*",
     "lodash": "*",
     "bluebird": "*",
     "colors": "*"
